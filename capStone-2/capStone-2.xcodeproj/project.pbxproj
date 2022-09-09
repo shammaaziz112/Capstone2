@@ -16,6 +16,7 @@
 		01BB3B1628CB930500E14BEE /* capStone_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BB3B1528CB930500E14BEE /* capStone_2Tests.swift */; };
 		01BB3B2028CB930500E14BEE /* capStone_2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BB3B1F28CB930500E14BEE /* capStone_2UITests.swift */; };
 		01BB3B2228CB930500E14BEE /* capStone_2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BB3B2128CB930500E14BEE /* capStone_2UITestsLaunchTests.swift */; };
+		01BB3B6B28CBA6A200E14BEE /* ModelApiImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BB3B6A28CBA6A200E14BEE /* ModelApiImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		01BB3B1B28CB930500E14BEE /* capStone-2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "capStone-2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01BB3B1F28CB930500E14BEE /* capStone_2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = capStone_2UITests.swift; sourceTree = "<group>"; };
 		01BB3B2128CB930500E14BEE /* capStone_2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = capStone_2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		01BB3B6A28CBA6A200E14BEE /* ModelApiImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelApiImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				01BB3AFE28CB930400E14BEE /* AppDelegate.swift */,
 				01BB3B0028CB930400E14BEE /* SceneDelegate.swift */,
 				01BB3B0228CB930400E14BEE /* ViewController.swift */,
+				01BB3B6A28CBA6A200E14BEE /* ModelApiImage.swift */,
 				01BB3B0428CB930400E14BEE /* Main.storyboard */,
 				01BB3B0728CB930500E14BEE /* Assets.xcassets */,
 				01BB3B0928CB930500E14BEE /* LaunchScreen.storyboard */,
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01BB3B6B28CBA6A200E14BEE /* ModelApiImage.swift in Sources */,
 				01BB3B0328CB930400E14BEE /* ViewController.swift in Sources */,
 				01BB3AFF28CB930400E14BEE /* AppDelegate.swift in Sources */,
 				01BB3B0128CB930400E14BEE /* SceneDelegate.swift in Sources */,
@@ -439,6 +443,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "capStone-2/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your agreement";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your agreement";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -466,6 +472,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "capStone-2/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your agreement";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your agreement";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
