@@ -16,16 +16,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="raQ-Va-aqr">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="raQ-Va-aqr">
                         <rect key="frame" x="0.0" y="55" width="350" height="240"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="240" id="q3G-ra-ySo"/>
                             <constraint firstAttribute="width" constant="350" id="spn-yu-3hX"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bog-it-rGu">
-                        <rect key="frame" x="20" y="20" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bog-it-rGu">
+                        <rect key="frame" x="20" y="20" width="315" height="21"/>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -42,15 +41,20 @@
                 <constraint firstAttribute="bottom" secondItem="raQ-Va-aqr" secondAttribute="bottom" constant="55" id="41M-Lo-Amd"/>
                 <constraint firstItem="raQ-Va-aqr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="55" id="4VK-8o-Zb4"/>
                 <constraint firstItem="Zo7-Pr-nvF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="6cF-ZK-LqD"/>
+                <constraint firstAttribute="bottom" secondItem="Bog-it-rGu" secondAttribute="bottom" constant="309" id="Amu-0H-6Rm"/>
+                <constraint firstItem="Bog-it-rGu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="I7r-j2-0ug"/>
+                <constraint firstAttribute="trailing" secondItem="Bog-it-rGu" secondAttribute="trailing" constant="15" id="LRo-BD-8aQ"/>
                 <constraint firstAttribute="trailing" secondItem="raQ-Va-aqr" secondAttribute="trailing" id="Pbo-GE-LvE"/>
                 <constraint firstAttribute="trailing" secondItem="Zo7-Pr-nvF" secondAttribute="trailing" constant="305" id="c33-3s-EVt"/>
                 <constraint firstItem="Zo7-Pr-nvF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="299" id="dLs-Cv-qkv"/>
                 <constraint firstAttribute="bottom" secondItem="Zo7-Pr-nvF" secondAttribute="bottom" constant="20" id="deh-Q5-Yz8"/>
                 <constraint firstItem="raQ-Va-aqr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nTK-eC-bhL"/>
+                <constraint firstItem="Bog-it-rGu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="zjI-a8-Qa8"/>
             </constraints>
             <size key="customSize" width="356" height="354"/>
             <connections>
                 <outlet property="cellImage" destination="raQ-Va-aqr" id="lEo-l9-FxT"/>
+                <outlet property="cellLocation" destination="Bog-it-rGu" id="93H-Zk-jxh"/>
             </connections>
             <point key="canvasLocation" x="-4.3478260869565224" y="107.14285714285714"/>
         </collectionViewCell>
