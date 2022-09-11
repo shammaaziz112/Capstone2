@@ -28,6 +28,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         userLocation = locationManeger.location?.coordinate
         fetchImage()
         collectionViewFlickr.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+        collectionViewFlickr.dataSource = self
         // Do any additional setup after loading the view.
         // Hazal test merge
         // Hazal Second
@@ -42,7 +43,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         guard userLocation?.longitude != nil, userLocation?.latitude != nil else {return}
         //Step1
         // Take the String URl for filker
-        let StringUrl = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=52c305c267ca5ccb6f5eb11a70f5f1dd&lat=\(userLocation!.latitude)&lon=\(userLocation!.longitude)&radius=10&per_page=20&format=json&nojsoncallback=1"
+        let StringUrl = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=5e6d2cdc2b1faacb82c7a8c18e627c91&lat=\(userLocation!.latitude)&lon=\(userLocation!.longitude)&radius=10&per_page=20&format=json&nojsoncallback=1"
 
         //Step2
         // Conver StringURL to URL
@@ -89,7 +90,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func fetchImageLocation(photos: [Photo]){
     //to get all the image in
         for image in photos{
-            let stringURL = "https://www.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_key=aaa2a4aa90e3f5fb291032faa5f2c690&photo_id=\(image.id)&format=json&nojsoncallback=1"
+            let stringURL = "https://www.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_key=5e6d2cdc2b1faacb82c7a8c18e627c91&photo_id=\(image.id)&format=json&nojsoncallback=1"
             
             guard let url = URL(string: stringURL) else {
                 print("url error")
@@ -156,6 +157,7 @@ extension UIImageView{
         //if there image in cache display it and don't continue
         if let cacheImage = imageToCache.object(forKey: NSString(string: urlString)) {
             self.image = cacheImage
+            return
         }
         
         // Conver StringURL to URL
