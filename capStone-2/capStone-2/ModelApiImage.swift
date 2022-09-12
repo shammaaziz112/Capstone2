@@ -22,15 +22,9 @@ struct Photos: Codable {
 // MARK: - Photo
 struct Photo: Codable {
     let id: String
-    let owner: Owner
+    let owner: String
     let secret, server: String
     let farm: Int
     let title: String
     let ispublic, isfriend, isfamily: Int
-}
-
-enum Owner: String, Codable {
-    case the196442524N08 = "196442524@N08"
-    case the22258272N08 = "22258272@N08"
-    case the67226407N03 = "67226407@N03"
 }

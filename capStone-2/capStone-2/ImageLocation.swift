@@ -4,9 +4,6 @@
 //
 //  Created by Hessa on 15/02/1444 AH.
 //
-
-import Foundation
-
 import Foundation
 
  //MARK: - ImagesLatLong

@@ -13,12 +13,14 @@ struct Image{
     let server: String
     let secret: String
     let location: String
+    let title:String
 }
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var collectionViewFlickr: UICollectionView!
-
+    var userLat:Double?
+    var userLon:Double?
     var locationManeger = CLLocationManager()
     var userLocation: CLLocationCoordinate2D?
     var images: [Image] = []
@@ -27,10 +29,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         userLocation = locationManeger.location?.coordinate
         fetchImage()
+        print("ksjdnka")
+       
         collectionViewFlickr.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
-        // Do any additional setup after loading the view.
-        // Hazal test merge
-        // Hazal Second
         locationManeger.delegate = self
         locationManeger.requestAlwaysAuthorization()
         locationManeger.startUpdatingLocation()
@@ -39,11 +40,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     func fetchImage(){
-        guard userLocation?.longitude != nil, userLocation?.latitude != nil else {return}
+        guard userLocation?.longitude != nil, userLocation?.latitude != nil else {
+            print("locaton erorr")
+            return}
         //Step1
         // Take the String URl for filker
-        let StringUrl = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=52c305c267ca5ccb6f5eb11a70f5f1dd&lat=\(userLocation!.latitude)&lon=\(userLocation!.longitude)&radius=10&per_page=20&format=json&nojsoncallback=1"
-
+        
+        print(userLocation!.longitude)
+        print(userLocation!.latitude)
+        // dbd7e53f8926d7fd1774cac11639d306
+        let StringUrl = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=7eb888cbb965961d29d37a0c4bef56b6&lat=\(userLocation!.latitude)&lon=\(userLocation!.longitude)&radius=1&format=json&nojsoncallback=1"
+        
         //Step2
         // Conver StringURL to URL
         guard let Url = URL(string: StringUrl) else {
@@ -67,8 +74,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 return
             }
             //if we want to read json NOT MATTER
-           // let jsonString = String(data: data!, encoding: .utf8)
-           // print("Jsone:\(jsonString!)")
+            let jsonString = String(data: data!, encoding: .utf8)
+            print("Jsone:\(jsonString!)")
             
             //Step4
             //Decode json from the MODEL from the Navigator in the Left
@@ -76,7 +83,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 print("Json Error")
                 return
             }
-
+            print("ljk")
             DispatchQueue.main.async {
                 self.fetchImageLocation(photos: json.photos.photo)
             }
@@ -89,8 +96,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func fetchImageLocation(photos: [Photo]){
     //to get all the image in
         for image in photos{
-            let stringURL = "https://www.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_key=aaa2a4aa90e3f5fb291032faa5f2c690&photo_id=\(image.id)&format=json&nojsoncallback=1"
+           let stringURL = "https://www.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_key=7eb888cbb965961d29d37a0c4bef56b6&photo_id=\(image.id)&format=json&nojsoncallback=1"
             
+            print("second fetch")
             guard let url = URL(string: stringURL) else {
                 print("url error")
                 return}
@@ -116,12 +124,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     return
                 }
                 // add image and detail to array
-                self.images.append(Image(id: image.id, server: image.server, secret: image.secret, location: jsonGeo.photo.location.country.content))
+                print("dha")
+                self.images.append(Image(id: image.id, server: image.server, secret: image.secret, location: jsonGeo.photo.location.country.content,title: image.title))
+                print("hg")
                 DispatchQueue.main.async {
                     self.collectionViewFlickr.reloadData()
                 }
             }
             task.resume()
+        }
+    }
+    @IBAction func Favorite(_ sender: Any) {
+        performSegue(withIdentifier: "FaovriteWay", sender: nil)
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            let latitdude = location.coordinate.latitude
+            let longtdude = location.coordinate.longitude
+            self.userLat = latitdude
+            self.userLon = longtdude
         }
     }
 }
@@ -136,10 +157,12 @@ extension ViewController: UICollectionViewDataSource{
         let photo = images[indexPath.row]
         // fetche image base on server, id, secret. formate: https://live.staticflickr.com/{server-id}/{id}_{secret}.jpg
         let StringUrl =  "https://live.staticflickr.com/\(photo.server)/\(photo.id)_\(photo.secret).jpg"
+        print("collction")
         //call func to load in the cache
         cell.cellImage.loadImageWithCache(StringUrl)
         //display image location
-        cell.cellLocation.text = "\(photo.location)"
+        cell.cellLocation.text = "\(photo.title)"
+        cell.cityName.text = photo.location
         return cell
     }
 }
@@ -151,15 +174,18 @@ extension UIImageView{
     
     func loadImageWithCache(_ urlString: String){
         
-//        self.image = nil
-        
+      self.image = nil
+        print("Here")
         //if there image in cache display it and don't continue
         if let cacheImage = imageToCache.object(forKey: NSString(string: urlString)) {
             self.image = cacheImage
+            return
         }
         
         // Conver StringURL to URL
-        guard let url = URL(string: urlString) else { return }
+        guard let url = URL(string: urlString) else {
+            print("urlStirng")
+            return }
         
         //Take the URL to session
         let Image = URLSession.shared.dataTask(with: url) { data, _, error in
@@ -172,7 +198,9 @@ extension UIImageView{
                 return}
             
             //change the urlData to Data for present it
-            guard let data1 = try? Data(contentsOf: url1 as URL) else {return}
+            guard let data1 = try? Data(contentsOf: url1 as URL) else {
+                print("Data erorr")
+                return}
             
             
             if let downloadImage = UIImage(data: data1){

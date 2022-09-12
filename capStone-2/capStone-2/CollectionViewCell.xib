@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,25 +29,25 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zo7-Pr-nvF">
-                        <rect key="frame" x="20" y="299" width="25" height="31"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
-                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3V-dW-E47">
+                        <rect key="frame" x="300.5" y="311" width="41.5" height="23"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="raQ-Va-aqr" secondAttribute="bottom" constant="55" id="41M-Lo-Amd"/>
                 <constraint firstItem="raQ-Va-aqr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="55" id="4VK-8o-Zb4"/>
-                <constraint firstItem="Zo7-Pr-nvF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="6cF-ZK-LqD"/>
                 <constraint firstAttribute="bottom" secondItem="Bog-it-rGu" secondAttribute="bottom" constant="309" id="Amu-0H-6Rm"/>
+                <constraint firstItem="C3V-dW-E47" firstAttribute="top" secondItem="raQ-Va-aqr" secondAttribute="bottom" constant="16" id="B6k-9k-ewM"/>
+                <constraint firstAttribute="bottom" secondItem="C3V-dW-E47" secondAttribute="bottom" constant="16" id="GsN-cA-dCT"/>
                 <constraint firstItem="Bog-it-rGu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="I7r-j2-0ug"/>
                 <constraint firstAttribute="trailing" secondItem="Bog-it-rGu" secondAttribute="trailing" constant="15" id="LRo-BD-8aQ"/>
+                <constraint firstAttribute="trailing" secondItem="C3V-dW-E47" secondAttribute="trailing" constant="8" id="P9O-WC-jNn"/>
                 <constraint firstAttribute="trailing" secondItem="raQ-Va-aqr" secondAttribute="trailing" id="Pbo-GE-LvE"/>
-                <constraint firstAttribute="trailing" secondItem="Zo7-Pr-nvF" secondAttribute="trailing" constant="305" id="c33-3s-EVt"/>
-                <constraint firstItem="Zo7-Pr-nvF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="299" id="dLs-Cv-qkv"/>
-                <constraint firstAttribute="bottom" secondItem="Zo7-Pr-nvF" secondAttribute="bottom" constant="20" id="deh-Q5-Yz8"/>
                 <constraint firstItem="raQ-Va-aqr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nTK-eC-bhL"/>
                 <constraint firstItem="Bog-it-rGu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="zjI-a8-Qa8"/>
             </constraints>
@@ -55,11 +55,9 @@
             <connections>
                 <outlet property="cellImage" destination="raQ-Va-aqr" id="lEo-l9-FxT"/>
                 <outlet property="cellLocation" destination="Bog-it-rGu" id="93H-Zk-jxh"/>
+                <outlet property="cityName" destination="C3V-dW-E47" id="B1i-ao-jly"/>
             </connections>
             <point key="canvasLocation" x="-4.3478260869565224" y="107.14285714285714"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="heart" catalog="system" width="128" height="109"/>
-    </resources>
 </document>
