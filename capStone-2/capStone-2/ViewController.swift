@@ -32,6 +32,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print("ksjdnka")
        
         collectionViewFlickr.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+
+        collectionViewFlickr.dataSource = self
+        // Do any additional setup after loading the view.
+        // Hazal test merge
+
         locationManeger.delegate = self
         locationManeger.requestAlwaysAuthorization()
         locationManeger.startUpdatingLocation()
@@ -50,7 +55,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print(userLocation!.latitude)
         // dbd7e53f8926d7fd1774cac11639d306
         let StringUrl = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=7eb888cbb965961d29d37a0c4bef56b6&lat=\(userLocation!.latitude)&lon=\(userLocation!.longitude)&radius=1&format=json&nojsoncallback=1"
-        
         //Step2
         // Conver StringURL to URL
         guard let Url = URL(string: StringUrl) else {
@@ -96,6 +100,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func fetchImageLocation(photos: [Photo]){
     //to get all the image in
         for image in photos{
+
            let stringURL = "https://www.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&api_key=7eb888cbb965961d29d37a0c4bef56b6&photo_id=\(image.id)&format=json&nojsoncallback=1"
             
             print("second fetch")
